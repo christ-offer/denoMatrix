@@ -24,16 +24,12 @@ const matrixBot = new SmallBot({
     eventHandler: async (client, matrixRoomId, event) => {
       if (event.sender !== client.ownUserId) {        
         console.log('new message')
-        await client.sendRoomNotice(matrixRoomId, "You said: <b>" + event.content.body + "</b>");
+        await client.sendRoomNotice("!phxFsseDFtRienTcza:matrix.org", "You said: <b>" + event.content.body + "</b>");
       }
       // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
 });
+await matrixBot.start();
 
 
-
-
-serve((_req) => {
-  await matrixBot.start();
-  console.log('hello world')
-});
+serve((_req) => {});
