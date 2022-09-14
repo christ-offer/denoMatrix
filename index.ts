@@ -15,13 +15,6 @@ const gitConf = {
   privateKey: Deno.env.get("APP_PRIVATE_KEY"),
 };
 
-webhooks(gitConf)(
-  on("issue_comment", ({ issue, comment }, _context) => {
-    console.info(
-      `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
-    );
-  }),
-);
 
 
 const matrixBot = new SmallBot({
@@ -32,7 +25,15 @@ const matrixBot = new SmallBot({
         await matrixBot.sendMessage(matrixRoomId, "m.text", "<b>hello world</b>")
     }
 });
-await matrixBot.start();
+await matrixBot.start().then(() => {
+  webhooks(gitConf)(
+  on("issue_comment", ({ issue, comment }, _context) => {
+    console.info(
+      `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
+    );
+  }),
+);
+});
 
 
 
