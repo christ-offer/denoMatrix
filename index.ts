@@ -12,13 +12,7 @@ const config = {
 const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
-    roomId: config.roomId,
-    eventHandler: async (matrixBot, roomId, event) => {
-        if (event.sender !== matrixBot.ownUserId) {
-            const profile = await matrixBot.getUserProfile(event.sender);
-            await matrixBot.sendRoomNotice(roomId, profile.displayname + ", you said: <b>" + event.content.body + "</b>");
-        }
-    }
+    roomId: config.roomId
 });
 await matrixBot.start();
 serve((_req) => {
