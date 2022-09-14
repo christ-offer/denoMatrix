@@ -17,8 +17,8 @@ serve((_req) => {
     roomId: config.roomId,
     eventHandler: async (client, roomId, event) => {
         if (event.sender !== client.ownUserId) {
-            const prf = await client.getUserProfile(event.sender);
-            await client.sendRoomNotice(roomId, prf.displayname + ", you said: <b>" + event.content.body + "</b>");
+            // const prf = await client.getUserProfile(event.sender);
+            // await client.sendRoomNotice(roomId, prf.displayname + ", you said: <b>" + event.content.body + "</b>");
         }
     },
   });
