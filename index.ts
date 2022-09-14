@@ -22,7 +22,7 @@ const matrixBot = new SmallBot({
     homeserverUrl: config.homeserverUrl,
     matrixRoomId: config.matrixRoomId,
     eventHandler: async (client, roomId, event) => {
-        await matrixBot.sendMessage(matrixRoomId, "m.text", "<b>hello world</b>")
+        await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
 });
 
@@ -33,6 +33,6 @@ await matrixBot.start();
 
 
 serve((_req) => {
-  
+
   console.log('hello world')
 });
