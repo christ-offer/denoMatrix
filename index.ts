@@ -15,11 +15,6 @@ serve((_req) => {
   const client = new SmallBot({
    accessToken: accessToken,
    homeserverUrl: homeserverUrl,
-   eventHandler: async (client, roomId, event) => {
-       if (event.sender !== client.ownUserId) {        
-           await client.sendRoomNotice(roomId, "You said: <b>" + event.content.body + "</b>");
-       }
-     }
   });
   await client.start();
 });
