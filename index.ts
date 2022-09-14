@@ -11,15 +11,14 @@ const config = {
 };
 
 serve((_req) => {
-  const storage = new SimpleFsStorageProvider("github-matrix-bot.json");
   const client = new SmallBot({
     accessToken: config.appId,
     homeserverUrl: config.homeserver,
     roomId: config.roomId,
     eventHandler: async (client, roomId, event) => {
         if (event.sender !== client.ownUserId) {
-            const profile = await client.getUserProfile(event.sender);
-            await client.sendRoomNotice(roomId, profile.displayname + ", you said: <b>" + event.content.body + "</b>");
+            const prf = await client.getUserProfile(event.sender);
+            await client.sendRoomNotice(roomId, prf.displayname + ", you said: <b>" + event.content.body + "</b>");
         }
     },
   });
