@@ -11,16 +11,5 @@ const config = {
 };
 
 serve((_req) => {
-  const client = new SmallBot({
-    accessToken: config.appId,
-    homeserverUrl: config.homeserver,
-    roomId: config.roomId,
-    eventHandler: async (client, roomId, event) => {
-        if (event.sender !== client.ownUserId) {
-            // const prf = await client.getUserProfile(event.sender);
-            // await client.sendRoomNotice(roomId, prf.displayname + ", you said: <b>" + event.content.body + "</b>");
-        }
-    },
-  });
-  await client.start()
+  console.log('hello world')
 });
