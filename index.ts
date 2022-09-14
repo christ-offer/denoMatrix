@@ -13,11 +13,16 @@ const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
     matrixRoomId: config.matrixRoomId,
-
+    eventHandler: async (client, roomId, event) => {
+        if (event.sender !== client.ownUserId) {
+            const profile = await client.getUserProfile(event.sender);
+            await client.sendRoomNotice(roomId, profile.displayname + ", you said: <b>" + event.content.body + "</b>");
+        }
+    }
 });
 await matrixBot.start();
 
-await matrixBot.sendMessage(matrixBot.matrixRoomId, "Hello there!")
+
 
 serve((_req) => {
   console.log('hello world')
