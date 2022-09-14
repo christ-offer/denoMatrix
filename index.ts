@@ -9,14 +9,14 @@ const config = {
   roomId: Deno.env.get("GITHUB_WEBHOOK_ROOM_ID"),
 };
 
-const client = new SmallBot({
+const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
     roomId: config.roomId,
-    eventHandler: async (client, roomId, event) => {
-        if (event.sender !== client.ownUserId) {
-            const profile = await client.getUserProfile(event.sender);
-            await client.sendRoomNotice(roomId, profile.displayname + ", you said: <b>" + event.content.body + "</b>");
+    eventHandler: async (matrixBot, roomId, event) => {
+        if (event.sender !== matrixBot.ownUserId) {
+            const profile = await matrixBot.getUserProfile(event.sender);
+            await matrixBot.sendRoomNotice(roomId, profile.displayname + ", you said: <b>" + event.content.body + "</b>");
         }
     }
 });
@@ -24,5 +24,5 @@ const client = new SmallBot({
 serve((_req) => {
   console.log('hello world')
 
-  await client.start();
+  await matrixBot.start();
 });
