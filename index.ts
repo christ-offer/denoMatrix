@@ -22,18 +22,19 @@ const matrixBot = new SmallBot({
     homeserverUrl: config.homeserverUrl,
     matrixRoomId: config.matrixRoomId,
     eventHandler: async (client, roomId, event) => {
-        await matrixBot.sendMessage(matrixRoomId, "m.text", "<b>hello world</b>")
-    }
-});
-await matrixBot.start().then(() => {
-  webhooks(gitConf)(
-  on("issue_comment", ({ issue, comment }, _context) => {
-    console.info(
-      `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
+      webhooks(gitConf)(
+        on("issue_comment", ({ issue, comment }, _context) => {
+        await matrixBot.sendMessage(matrixRoomId,
+          `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
+        );
+      }),
     );
-  }),
-);
+  }
 });
+
+
+
+await matrixBot.start();
 
 
 
