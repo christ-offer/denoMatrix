@@ -20,11 +20,11 @@ const gitConf = {
 const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
-    matrixRoomId: config.matrixRoomId,
-    eventHandler: async (client, matrixRoomId, event) => {
-      if (event.sender !== client.ownUserId) {        
+    matrixRoomId: "!phxFsseDFtRienTcza:matrix.org",
+    eventHandler: async (matrixBot, matrixRoomId, event) => {
+      if (event.sender !== matrixBot.ownUserId) {        
         console.log('new message')
-        await client.sendRoomNotice("!phxFsseDFtRienTcza:matrix.org", "You said: <b>" + event.content.body + "</b>");
+        await matrixBot.sendRoomNotice(matrixRoomId, "You said: <b>" + event.content.body + "</b>");
       }
       // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
