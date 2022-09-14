@@ -20,9 +20,9 @@ const matrixBot = new SmallBot({
         }
     }
 });
-
+await matrixBot.start();
 serve((_req) => {
   console.log('hello world')
 
-  await matrixBot.start();
+  
 });
