@@ -25,7 +25,7 @@ const matrixBot = new SmallBot({
       if (event.sender !== client.ownUserId) {        
         await client.sendRoomNotice(roomId, "You said: <b>" + event.content.body + "</b>");
       }
-      await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
+      // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
 });
 
