@@ -14,12 +14,19 @@ const matrixBot = new SmallBot({
     homeserverUrl: config.homeserverUrl,
     roomId: config.roomId,
     eventHandler: async (matrixBot, roomId, event) => {
-      await matrixBot.sendRoomNotice(roomId, "bip bop i'm a bot");  
+      webhooks()(
+        on("issue_comment", ({ issue, comment }, _context) => {
+          await matrixBot.sendRoomNotice(roomId, 
+            `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
+          );
+        }),
+      );  
     }
 });
 await matrixBot.start();
+
+
+
 serve((_req) => {
   console.log('hello world')
-
-  
 });
