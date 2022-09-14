@@ -20,9 +20,9 @@ const matrixBot = new SmallBot({
       // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
 });
-
+await matrixBot.start();
 
 
 serve((_req) => {
-  await matrixBot.start();
+  
 });
