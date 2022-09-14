@@ -8,12 +8,7 @@ const config = {
   matrixRoomId: Deno.env.get("GITHUB_WEBHOOK_ROOM_ID"),
 };
 
-
-
-
-
-serve((_req) => {
-  const matrixBot = new SmallBot({
+const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
     matrixRoomId: "!phxFsseDFtRienTcza:matrix.org",
@@ -24,6 +19,10 @@ serve((_req) => {
       }
       // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
     }
-  });
+});
+
+
+
+serve((_req) => {
   await matrixBot.start();
 });
