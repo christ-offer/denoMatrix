@@ -25,13 +25,7 @@ const matrixBot = new SmallBot({
         await matrixBot.sendMessage(matrixRoomId, "m.text", "<b>hello world</b>")
     }
 });
-webhooks(gitConf)(
-  on("issue_comment", ({ issue, comment }, _context) => {
-    console.info(
-      `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
-    );
-  }),
-);
+
 
 
 await matrixBot.start();
@@ -39,5 +33,6 @@ await matrixBot.start();
 
 
 serve((_req) => {
+  
   console.log('hello world')
 });
