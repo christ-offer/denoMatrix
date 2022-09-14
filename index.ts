@@ -17,7 +17,7 @@ const matrixBot = new SmallBot({
 });
 await matrixBot.start();
 
-matrixBot.sendMessage(matrixRoomId, "Hello there!")
+matrixBot.sendMessage(matrixBot.matrixRoomId, "Hello there!")
 
 serve((_req) => {
   console.log('hello world')
