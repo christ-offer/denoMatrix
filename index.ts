@@ -6,17 +6,17 @@ import { SmallBot } from "https://raw.githubusercontent.com/cybertim/SmallBotMat
 const config = {
   accessToken: Deno.env.get("MATRIX_ACCESS_TOKEN"),
   homeserverUrl: Deno.env.get("MATRIX_SERVER_NAME") || generateSecret(),
-  roomId: Deno.env.get("GITHUB_WEBHOOK_ROOM_ID"),
+  matrixRoomId: Deno.env.get("GITHUB_WEBHOOK_ROOM_ID"),
 };
 
 const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
-    roomId: config.roomId,
+    matrixRoomId: config.matrixRoomId,
     eventHandler: async (matrixBot, roomId, event) => {
       webhooks()(
         on("issue_comment", ({ issue, comment }, _context) => {
-          await matrixBot.sendRoomNotice(roomId, 
+          await matrixBot.sendRoomNotice(matrixRoomId, 
             `@${comment.user.login} commented on issue #${issue.number}: ${comment.body}`,
           );
         }),
