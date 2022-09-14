@@ -17,7 +17,12 @@ const gitConf = {
 
 
 
-const matrixBot = new SmallBot({
+
+
+
+
+serve((_req) => {
+  const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
     matrixRoomId: config.matrixRoomId,
@@ -30,10 +35,5 @@ const matrixBot = new SmallBot({
     }
 });
 await matrixBot.start();
-
-
-
-serve((_req) => {
-
   console.log('hello world')
 });
