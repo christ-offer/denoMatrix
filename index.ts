@@ -12,7 +12,10 @@ const config = {
 const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
-    roomId: config.roomId
+    roomId: config.roomId,
+    eventHandler: async (matrixBot, roomId, event) => {
+      await matrixBot.sendRoomNotice(roomId, "bip bop i'm a bot");  
+    }
 });
 await matrixBot.start();
 serve((_req) => {
