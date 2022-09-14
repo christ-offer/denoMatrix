@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
 import { config } from 'https://deno.land/x/dotenv@v1.0.1/mod.ts';
 import { on, webhooks } from "https://deno.land/x/github_webhooks@0.1.0/mod.ts";
-import * as SmallBot from "https://raw.githubusercontent.com/cybertim/SmallBotMatrix/main/mod.ts";
+import { SmallBot } from "https://raw.githubusercontent.com/cybertim/SmallBotMatrix/main/mod.ts";
 
 const config = {
   accessToken: Deno.env.get("MATRIX_ACCESS_TOKEN"),
