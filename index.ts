@@ -11,7 +11,7 @@ const config = {
 const matrixBot = new SmallBot({
     accessToken: config.accessToken,
     homeserverUrl: config.homeserverUrl,
-    matrixRoomId: "!phxFsseDFtRienTcza:matrix.org",
+    matrixRoomId: "",
     eventHandler: async (matrixBot, matrixRoomId, event) => {
       await matrixBot.sendRoomNotice(matrixRoomId, "You said: <b>" + event.content.body + "</b>");
       // await matrixBot.sendMessage("!phxFsseDFtRienTcza:matrix.org", "m.text", "<b>hello world</b>")
